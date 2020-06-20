@@ -189,10 +189,13 @@ class MainWindow(QMainWindow):
 
     def input_file(self):
         print("hello")
-        file_path, filetype = QFileDialog.getOpenFileName(self,
+        file_path, filetype = QFileDialog.getOpenFileNames(self,
                                                           "选取文件",
                                                           "./",
-                                                          "All Files (*);;Text Files (*.txt)")  # 设置文件扩展名过滤,注意用双分号间隔
+                                                          "DOC Files (*.docx);;DOC Files (*.doc)")  # 设置文件扩展名过滤,注意用双分号间隔
+        if len(file_path)==0:
+            print("取消选择,没有选择任何文件")
+            return
         print(file_path, filetype)
         file_path_str = str(file_path)
         time_start = time.time()
