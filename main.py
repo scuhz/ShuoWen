@@ -135,6 +135,7 @@ class MainWindow(QMainWindow):
         self.user_line.setPlaceholderText("输入账号：")
         self.user_line.setFixedWidth(400)
         self.password_line = QLineEdit(right_frame)
+        self.password_line.setEchoMode(QLineEdit.Password)
         self.password_line.setPlaceholderText("请输入密码：")
         self.password_line.setFixedWidth(400)
         self.login_btn = QPushButton("确认登陆")
@@ -224,6 +225,9 @@ class MainWindow(QMainWindow):
         self.check_btn.setEnabled(False)
 
     def login_press(self):
+        user = self.user_line.text()
+        passwd = self.password_line.text()
+        print("do match operation with input user and passwd")
         self.verifyid_btn.setEnabled(True)
         self.input_btn.setEnabled(True)
         self.check_btn.setEnabled(True)
