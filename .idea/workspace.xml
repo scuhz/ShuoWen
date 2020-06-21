@@ -3456,7 +3456,7 @@
       <workItem from="1591345927823" duration="4596000" />
       <workItem from="1592451101682" duration="1448000" />
       <workItem from="1592622452317" duration="980000" />
-      <workItem from="1592741472382" duration="527000" />
+      <workItem from="1592741472382" duration="1230000" />
     </task>
     <servers />
   </component>
@@ -3472,22 +3472,22 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="500" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1592622548491" />
-    <state width="1397" height="242" key="GridCell.Tab.0.bottom" timestamp="1592457186352">
+    <state width="1397" height="180" key="GridCell.Tab.0.bottom" timestamp="1592742572686">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1592457186352" />
-    <state width="1397" height="242" key="GridCell.Tab.0.center" timestamp="1592457186351">
+    <state width="1397" height="180" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1592742572686" />
+    <state width="1397" height="180" key="GridCell.Tab.0.center" timestamp="1592742572686">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1592457186351" />
-    <state width="1397" height="242" key="GridCell.Tab.0.left" timestamp="1592457186351">
+    <state width="1397" height="180" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1592742572686" />
+    <state width="1397" height="180" key="GridCell.Tab.0.left" timestamp="1592742572685">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1592457186351" />
-    <state width="1397" height="242" key="GridCell.Tab.0.right" timestamp="1592457186351">
+    <state width="1397" height="180" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1592742572685" />
+    <state width="1397" height="180" key="GridCell.Tab.0.right" timestamp="1592742572686">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1397" height="242" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1592457186351" />
+    <state width="1397" height="180" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1592742572686" />
     <state x="222" y="103" key="SettingsEditor" timestamp="1589720329173">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -3501,6 +3501,6 @@
     <SUITE FILE_PATH="coverage/old_chinese$untitled.coverage" NAME="untitled Coverage Results" MODIFIED="1586534210522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/old_chinese$test.coverage" NAME="test Coverage Results" MODIFIED="1590414957068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/old_chinese$samp__1_.coverage" NAME="samp (1) Coverage Results" MODIFIED="1591364581101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/old_chinese$main.coverage" NAME="main Coverage Results" MODIFIED="1592741937215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/old_chinese$main.coverage" NAME="main Coverage Results" MODIFIED="1592742572670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

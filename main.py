@@ -111,15 +111,15 @@ class MainWindow(QMainWindow):
         blank_layout = QVBoxLayout(bottom_left_frame)
         self.blank_label.setText("古汉语~~~")
         self.blank_label.setFixedHeight(50)
-        self.progressBar = QProgressBar(bottom_left_frame)
+        #self.progressBar = QProgressBar(bottom_left_frame)
         #self.progressBar.setGeometry(QRect(210, 50, 118, 23))
-        self.progressBar.setProperty("value", 0)
-        self.progressBar.setObjectName("progressBar")
+        #self.progressBar.setProperty("value", 0)
+        #self.progressBar.setObjectName("progressBar")
         self.timer = QBasicTimer()
         self.step = 0
         self.analysis_time = 0
         blank_layout.addWidget(self.blank_label)
-        blank_layout.addWidget(self.progressBar)
+        #blank_layout.addWidget(self.progressBar)
         self.webEngineView = QWebEngineView(bottom_left_frame)
         self.webEngineView.close()
         blank_layout.addWidget(self.webEngineView)
@@ -269,7 +269,7 @@ class MainWindow(QMainWindow):
         time_end =time.time()
         self.analysis_time = time_end-time_start
         print(self.analysis_time)
-        self.progressBar.setMaximum(self.analysis_time)
+        #self.progressBar.setMaximum(self.analysis_time)
         self.timer.start(100, self)
         #self.check_info.setPlainText("分析后的结果会在这里呈现，文本，HTML，图像等")
         '''
@@ -292,7 +292,7 @@ class MainWindow(QMainWindow):
             return
         self.step = self.step + self.analysis_time/100
         #print(self.step)
-        self.progressBar.setValue(self.step)
+        #self.progressBar.setValue(self.step)
 
     def save_click(self):
         file_save_path, ok2 = QFileDialog.getSaveFileName(self,
