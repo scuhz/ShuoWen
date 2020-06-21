@@ -76,9 +76,9 @@ class MainWindow(QMainWindow):
         self.user_btn.setFixedSize(150, 30), self.user_btn.setText("登录")
         button_layout.addWidget(self.user_btn)
         # 确认按钮
-        verifyid_btn = QPushButton(top_left_frame)
-        verifyid_btn.setFixedSize(150, 30), verifyid_btn.setText("确认文件形式")
-        button_layout.addWidget(verifyid_btn)
+        self.verifyid_btn = QPushButton(top_left_frame)
+        self.verifyid_btn.setFixedSize(150, 30), self.verifyid_btn.setText("确认文件形式")
+        button_layout.addWidget(self.verifyid_btn)
 
         # 申请账号　按钮
         '''
@@ -87,9 +87,9 @@ class MainWindow(QMainWindow):
         button_layout.addWidget(registor_btn)
         '''
         # 录入信息按钮
-        input_btn = QPushButton(top_left_frame)
-        input_btn.setFixedSize(150, 30), input_btn.setText("上传文件")
-        button_layout.addWidget(input_btn)
+        self.input_btn = QPushButton(top_left_frame)
+        self.input_btn.setFixedSize(150, 30), self.input_btn.setText("上传文件")
+        button_layout.addWidget(self.input_btn)
         # 查询按钮
         '''
         save_btn = QPushButton(top_left_frame)
@@ -97,9 +97,9 @@ class MainWindow(QMainWindow):
         button_layout.addWidget(save_btn)
         '''
         # 查看　按钮
-        check_btn = QPushButton(top_left_frame)
-        check_btn.setFixedSize(150, 30), check_btn.setText("查看信息")
-        button_layout.addWidget(check_btn)
+        self.check_btn = QPushButton(top_left_frame)
+        self.check_btn.setFixedSize(150, 30), self.check_btn.setText("查看信息")
+        button_layout.addWidget(self.check_btn)
         # 退出按钮
         quit_btn = QPushButton(top_left_frame)
         quit_btn.setFixedSize(150, 30), quit_btn.setText("退出")
@@ -131,20 +131,20 @@ class MainWindow(QMainWindow):
         self.right_layout = QStackedLayout(right_frame)
 
         # 登录界面
-        user_line = QLineEdit(right_frame)
-        user_line.setPlaceholderText("输入账号：")
-        user_line.setFixedWidth(400)
-        password_line = QLineEdit(right_frame)
-        password_line.setPlaceholderText("请输入密码：")
-        password_line.setFixedWidth(400)
-        login_btn = QPushButton("确认登陆")
-        login_btn.setFixedSize(100, 30)
+        self.user_line = QLineEdit(right_frame)
+        self.user_line.setPlaceholderText("输入账号：")
+        self.user_line.setFixedWidth(400)
+        self.password_line = QLineEdit(right_frame)
+        self.password_line.setPlaceholderText("请输入密码：")
+        self.password_line.setFixedWidth(400)
+        self.login_btn = QPushButton("确认登陆")
+        self.login_btn.setFixedSize(100, 30)
         login_layout = QVBoxLayout()
         login_widget = QWidget(right_frame)
         login_widget.setLayout(login_layout)
-        login_layout.addWidget(user_line)
-        login_layout.addWidget(password_line)
-        login_layout.addWidget(login_btn)
+        login_layout.addWidget(self.user_line)
+        login_layout.addWidget(self.password_line)
+        login_layout.addWidget(self.login_btn)
         self.right_layout.addWidget(login_widget)
 
 
@@ -208,20 +208,25 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
         # 函数功能区
-        verifyid_btn.clicked.connect(self.show_verifyid_page)
+        self.verifyid_btn.clicked.connect(self.show_verifyid_page)
         self.user_btn.clicked.connect(self.show_login_page)
         #registor_btn.clicked.connect(self.show_register_page)
-        check_btn.clicked.connect(self.show_check_page)
+        self.check_btn.clicked.connect(self.show_check_page)
         quit_btn.clicked.connect(self.quit_act)
-        input_btn.clicked.connect(self.input_file)
+        self.input_btn.clicked.connect(self.input_file)
         self.bg1.buttonClicked.connect(self.rbclicked)
+        self.login_btn.clicked.connect(self.login_press)
         #save_btn.clicked.connect(self.save_click)
 
         # 禁用按钮
-        #verifyid_btn.setEnabled(False)
-        #input_btn.setEnabled(False)
-        #check_btn.setEnabled(False)
+        self.verifyid_btn.setEnabled(False)
+        self.input_btn.setEnabled(False)
+        self.check_btn.setEnabled(False)
 
+    def login_press(self):
+        self.verifyid_btn.setEnabled(True)
+        self.input_btn.setEnabled(True)
+        self.check_btn.setEnabled(True)
 
     def rbclicked(self):
         if self.bg1.checkedId()==1:
