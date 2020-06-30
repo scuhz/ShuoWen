@@ -286,9 +286,9 @@ class tuban():
         document.save('demo.docx')
         
 if __name__ == '__main__':
-    os.mkdir('img')
+    #os.mkdir('img')
     parser = argparse.ArgumentParser(description='Shuowen Platform.')
-    parser.add_argument('-f', '--file', default="D:\\anti_file\\test1.docx", help='input docx address')
+    parser.add_argument('-f', '--file', default="D:\github_projrct\old_chinese\\test1.docx", help='input docx address')
     parser.add_argument('-m', '--mode', default="docx", help='return in docx or html')
     parser.add_argument('-s', '--style', default="1", help='output with img or id')
     args = parser.parse_args()
