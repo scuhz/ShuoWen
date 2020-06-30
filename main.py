@@ -239,7 +239,7 @@ class MainWindow(QMainWindow):
             self.style =2
         elif self.bg1.checkedId()==3:
             self.style =3
-        print(self.style)
+        #print(self.style)
 
     def onUpdateText(self, text):
         """Write console output to text widget."""
@@ -252,7 +252,7 @@ class MainWindow(QMainWindow):
 
     def input_file(self):
         self.right_layout.setCurrentIndex(2)
-        print("hello")
+        #print("hello")
         file_path, filetype = QFileDialog.getOpenFileName(self,
                                                           "选取文件",
                                                           "./",
@@ -260,7 +260,7 @@ class MainWindow(QMainWindow):
         if file_path=='':
             print("取消选择,没有选择任何文件")
             return
-        print(file_path)
+        #print(file_path)
         file_path_str = str(file_path)
         time_start = time.time()
 
@@ -268,27 +268,16 @@ class MainWindow(QMainWindow):
         analysis(file_path_str,self.style)
         ### python file analysis block end
 
-        print(sys.stderr)
+        #print(sys.stderr)
         self.blank_label.setText("正在帮你分析~~")
         time_end =time.time()
         self.analysis_time = time_end-time_start
         print(self.analysis_time)
+        self.blank_label.setText('分析完成')
         #self.progressBar.setMaximum(self.analysis_time)
-        self.timer.start(100, self)
+        #self.timer.start(100, self)
         #self.check_info.setPlainText("分析后的结果会在这里呈现，文本，HTML，图像等")
-        '''
-        bat_path=os.path.join(os.getcwd(),"kk.bat")
-        time_start = time.time()
-        cmd = "cmd.exe "+bat_path+" "+file_path_str
-        print(cmd)
-        result = Popen(cmd,stdout=PIPE,stderr=STDOUT)
-        time_end =time.time()
-        self.analysis_time = time_end-time_start
-        self.progressBar.setMaximum(self.analysis_time)
-        self.timer.start(100, self)#时间间隔为100ms
-        print(result)
-        doc = Document(result)
-        '''
+    
     def timerEvent(self, e):
         if self.step >= self.analysis_time:
             self.timer.stop()
