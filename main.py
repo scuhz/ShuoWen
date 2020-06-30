@@ -13,7 +13,7 @@ from shuowen import *
 
 
 def analysis(file_path_str, style=1):
-    print('开始分析文档~~')
+    #print('开始分析文档~~')
     tb = tuban(file_path_str)
     try:
         flag = tb.parse()
@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         sys.stdout = Stream(newText=self.onUpdateText)
         self.style=1
+        self.pretext_len = 0
         # 设置窗口名称
         self.setWindowTitle("古汉语说文系统")
 
@@ -227,7 +228,7 @@ class MainWindow(QMainWindow):
     def login_press(self):
         user = self.user_line.text()
         passwd = self.password_line.text()
-        print("do match operation with input user and passwd")
+        #print("do match operation with input user and passwd")
         self.verifyid_btn.setEnabled(True)
         self.input_btn.setEnabled(True)
         self.check_btn.setEnabled(True)
@@ -244,11 +245,22 @@ class MainWindow(QMainWindow):
     def onUpdateText(self, text):   #service for class Stream
         """Write console output to text widget."""
         cursor = self.check_info.textCursor()
-        #cursor.select(QTextCursor.LineUnderCursor)
-        #cursor.removeSelectedText()
-        self.check_info.clear()
+        #if '\n' in text :
+         #   return 
+        if '|' in text :
+            cursor.movePosition(QTextCursor.End)
+            cursor.setPosition(cursor.position(),QTextCursor.MoveAnchor)  
+            cursor.setPosition(cursor.position()-self.pretext_len,QTextCursor.KeepAnchor)
+            cursor.removeSelectedText()
+            #if '100' in text.split('|')[0]:
+                #cursor.movePosition(QTextCursor.End)
+                #cursor.insertText(text)
         cursor.movePosition(QTextCursor.End)
         cursor.insertText(text)
+        #self.check_info.append(text)
+        self.pretext_len = len(text)
+        #time.sleep(1)
+        
         self.check_info.setTextCursor(cursor)
         self.check_info.ensureCursorVisible()
 
@@ -269,12 +281,12 @@ class MainWindow(QMainWindow):
         ### python file analysis block start
         analysis(file_path_str,self.style)
         ### python file analysis block end
-
+ 
         self.blank_label.setText("正在帮您分析")
         time_end =time.time()
         self.analysis_time = time_end-time_start
         print(self.analysis_time)
-        self.check_info.setPlainText('分析完成,总共耗时%.2fs'%float(self.analysis_time))
+        self.check_info.append('分析完成,总共耗时%.2fs'%float(self.analysis_time))
         self.blank_label.setText('分析完成')
         #self.progressBar.setMaximum(self.analysis_time)
         #self.timer.start(100, self)
