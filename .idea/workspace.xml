@@ -3306,7 +3306,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/pycharm_code/iiotcareer" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.main">
@@ -3457,6 +3457,7 @@
       <workItem from="1592451101682" duration="1448000" />
       <workItem from="1592622452317" duration="980000" />
       <workItem from="1592741472382" duration="2875000" />
+      <workItem from="1593408566566" duration="74000" />
     </task>
     <servers />
   </component>
@@ -3468,10 +3469,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="484" y="290" key="#com.intellij.tools.ToolEditorDialog/0.0.1440.920@0.0.1440.920" timestamp="1586500673570" />
-    <state x="500" y="215" key="FileChooserDialogImpl" timestamp="1592622548491">
+    <state x="500" y="215" key="FileChooserDialogImpl" timestamp="1593408639085">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="500" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1592622548491" />
+    <state x="500" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1593408639085" />
     <state width="1397" height="180" key="GridCell.Tab.0.bottom" timestamp="1592744490650">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -3492,10 +3493,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="222" y="103" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1589720329173" />
-    <state x="405" y="285" key="com.intellij.ide.util.TipDialog" timestamp="1592622455864">
+    <state x="405" y="285" key="com.intellij.ide.util.TipDialog" timestamp="1593408609302">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="405" y="285" key="com.intellij.ide.util.TipDialog/0.0.1440.920@0.0.1440.920" timestamp="1592622455864" />
+    <state x="405" y="285" key="com.intellij.ide.util.TipDialog/0.0.1440.920@0.0.1440.920" timestamp="1593408609302" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/old_chinese$untitled.coverage" NAME="untitled Coverage Results" MODIFIED="1586534210522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

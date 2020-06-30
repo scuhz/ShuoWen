@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         sys.stdout = Stream(newText=self.onUpdateText)
         self.style=1
         # 设置窗口名称
-        self.setWindowTitle("古汉语纠错系统")
+        self.setWindowTitle("古汉语说文系统")
 
         # 设置状态栏
         self.status = self.statusBar()
@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
         bottom_left_frame = QFrame(self)
         self.blank_label = QLabel(bottom_left_frame)
         blank_layout = QVBoxLayout(bottom_left_frame)
-        self.blank_label.setText("古汉语~~~")
+        self.blank_label.setText("HZDC")
         self.blank_label.setFixedHeight(50)
         #self.progressBar = QProgressBar(bottom_left_frame)
         #self.progressBar.setGeometry(QRect(210, 50, 118, 23))
@@ -241,9 +241,12 @@ class MainWindow(QMainWindow):
             self.style =3
         #print(self.style)
 
-    def onUpdateText(self, text):
+    def onUpdateText(self, text):   #service for class Stream
         """Write console output to text widget."""
         cursor = self.check_info.textCursor()
+        #cursor.select(QTextCursor.LineUnderCursor)
+        #cursor.removeSelectedText()
+        self.check_info.clear()
         cursor.movePosition(QTextCursor.End)
         cursor.insertText(text)
         self.check_info.setTextCursor(cursor)
@@ -260,7 +263,6 @@ class MainWindow(QMainWindow):
         if file_path=='':
             print("取消选择,没有选择任何文件")
             return
-        #print(file_path)
         file_path_str = str(file_path)
         time_start = time.time()
 
@@ -268,11 +270,11 @@ class MainWindow(QMainWindow):
         analysis(file_path_str,self.style)
         ### python file analysis block end
 
-        #print(sys.stderr)
-        self.blank_label.setText("正在帮你分析~~")
+        self.blank_label.setText("正在帮您分析")
         time_end =time.time()
         self.analysis_time = time_end-time_start
         print(self.analysis_time)
+        self.check_info.setPlainText('分析完成,总共耗时%.2fs'%float(self.analysis_time))
         self.blank_label.setText('分析完成')
         #self.progressBar.setMaximum(self.analysis_time)
         #self.timer.start(100, self)

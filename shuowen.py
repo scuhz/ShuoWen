@@ -106,7 +106,7 @@ class tuban():
         this_booknum = ""
         this_character = []
         pre_num = ""
-        for p in tqdm(p_list,file=sys.stdout):
+        for p in tqdm(p_list,file=sys.stdout,ncols=80):
             if flag%2 == 0:
                 this_booknum = ""
             else:
@@ -190,7 +190,7 @@ class tuban():
         array = self.character
         self.ch_dict = {}
         flag = 0
-        for k in tqdm(array.keys(),file=sys.stdout):
+        for k in tqdm(array.keys(),file=sys.stdout,ncols=80):
             for item in array[k]:
                 if item[0] not in self.ch_dict.keys():
                     self.ch_dict[item[0]] = []
@@ -231,7 +231,7 @@ class tuban():
         output in the form of html
         '''
         f = open(self.output, "w", encoding="utf8")
-        for k in tqdm(self.ch_dict.keys(),file=sys.stdout):
+        for k in tqdm(self.ch_dict.keys(),file=sys.stdout,ncols=80):
             print("<p>"+k+"</p>", file=f)
             print("<p>", end="", file=f)
             for item in self.ch_dict[k]:
@@ -253,7 +253,7 @@ class tuban():
         '''
         document = Document()
         no_id = []
-        for k in tqdm(self.ch,file=sys.stdout):
+        for k in tqdm(self.ch,file=sys.stdout,ncols=80):
             if k[0] in self.dictionary.keys():
                 paragraph_character = document.add_paragraph(k[0])
                 if style == "1":
@@ -272,7 +272,7 @@ class tuban():
                     paragraph_image.add_run(item[1]) # book
             else:
                 no_id.append(k)
-        for k in tqdm(no_id,file=sys.stdout):
+        for k in tqdm(no_id,file=sys.stdout,ncols=80):
             paragraph_character = document.add_paragraph(k[0])
             # paragraph_character.add_run().add_picture("sampleimg/"+str(self.dictionary[k[0]])+".png", width=Cm(1.5))
             paragraph_image = document.add_paragraph()
