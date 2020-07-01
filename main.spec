@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['D:\\pycharm_code\\old_chinese'],
+             pathex=['D:\\github_projrct\\old_chinese'],
              binaries=[],
-             datas=[('sampleimg','sampleimg'),('ch2id.json','ch2id.json')],
-             hiddenimports=['pkg_resources.py2_warn'],
+             datas=[],
+             hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -31,4 +31,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False)
+          console=True )
