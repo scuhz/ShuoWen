@@ -256,9 +256,9 @@ class tuban():
         for k in tqdm(self.ch,file=sys.stdout,ncols=80):
             if k[0] in self.dictionary.keys():
                 paragraph_character = document.add_paragraph(k[0])
-                if style == "1":
+                if style == 1:
                     paragraph_character.add_run("  "+str(self.dictionary[k[0]]))
-                if style == "2" or style == "1":
+                if style == 2 or style == 1:
                     paragraph_character.add_run("  ")
                     paragraph_character.add_run().add_picture("sampleimg/"+str(self.dictionary[k[0]])+".png", width=Cm(1.5))
                 
