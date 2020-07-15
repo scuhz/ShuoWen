@@ -283,7 +283,8 @@ class tuban():
                     fig = new_fig
                 paragraph_image.add_run().add_picture(fig, width=Cm(1.5))
                 paragraph_image.add_run(item[1]) # book
-        document.save('demo.docx')
+        #document.save('demo.docx')
+        return document
         
 if __name__ == '__main__':
     #os.mkdir('img')

@@ -7,13 +7,22 @@ from PyQt5.QtWidgets import (QApplication, QSplitter, QGridLayout, QHBoxLayout, 
                              QTreeWidgetItem, QDesktopWidget,QFileDialog,QProgressBar)
 from PyQt5.QtCore import Qt, QUrl,QRect,QBasicTimer,QObject,pyqtSignal
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QTextCursor,QIcon
 import time
 from shuowen import *
+from util import get_mysql_result
 
+def match(user,passwd):
+    myRsult= get_mysql_result()
+    for item in myRsult:
+        if(user,passwd)==item:
+            return True
+        else:
+            return False
 
 def analysis(file_path_str, style=1):
     #print('开始分析文档~~')
+    global document
     tb = tuban(file_path_str)
     try:
         flag = tb.parse()
@@ -22,9 +31,10 @@ def analysis(file_path_str, style=1):
         flag = -2
     if flag == -1:
         tb.dict2order_save()
-        tb.get_output_docx_by_docx(style)
+        document = tb.get_output_docx_by_docx(style)
     else:
         print(tb.get_error())
+
 
 
 class Stream(QObject):
@@ -45,6 +55,7 @@ class MainWindow(QMainWindow):
         self.pretext_len = 0
         # 设置窗口名称
         self.setWindowTitle("古汉语说文系统")
+        self.setWindowIcon(QIcon('D:/picture/bitbug_favicon.ico'))
 
         # 设置状态栏
         self.status = self.statusBar()
@@ -91,12 +102,12 @@ class MainWindow(QMainWindow):
         self.input_btn = QPushButton(top_left_frame)
         self.input_btn.setFixedSize(150, 30), self.input_btn.setText("上传文件")
         button_layout.addWidget(self.input_btn)
-        # 查询按钮
-        '''
-        save_btn = QPushButton(top_left_frame)
-        save_btn.setFixedSize(100, 30), save_btn.setText("保存信息")
-        button_layout.addWidget(save_btn)
-        '''
+        # 保存按钮
+
+        self.save_btn = QPushButton(top_left_frame)
+        self.save_btn.setFixedSize(150, 30), self.save_btn.setText("保存信息")
+        button_layout.addWidget(self.save_btn)
+
         # 查看　按钮
         self.check_btn = QPushButton(top_left_frame)
         self.check_btn.setFixedSize(150, 30), self.check_btn.setText("查看信息")
@@ -112,10 +123,6 @@ class MainWindow(QMainWindow):
         blank_layout = QVBoxLayout(bottom_left_frame)
         self.blank_label.setText("HZDC")
         self.blank_label.setFixedHeight(50)
-        #self.progressBar = QProgressBar(bottom_left_frame)
-        #self.progressBar.setGeometry(QRect(210, 50, 118, 23))
-        #self.progressBar.setProperty("value", 0)
-        #self.progressBar.setObjectName("progressBar")
         self.timer = QBasicTimer()
         self.step = 0
         self.analysis_time = 0
@@ -216,6 +223,7 @@ class MainWindow(QMainWindow):
         self.check_btn.clicked.connect(self.show_check_page)
         quit_btn.clicked.connect(self.quit_act)
         self.input_btn.clicked.connect(self.input_file)
+        self.save_btn.clicked.connect(self.save_click)
         self.bg1.buttonClicked.connect(self.rbclicked)
         self.login_btn.clicked.connect(self.login_press)
         #save_btn.clicked.connect(self.save_click)
@@ -224,14 +232,21 @@ class MainWindow(QMainWindow):
         self.verifyid_btn.setEnabled(False)
         self.input_btn.setEnabled(False)
         self.check_btn.setEnabled(False)
+        self.save_btn.setEnabled(False)
 
     def login_press(self):
+        self.check_info.clear()
+        self.right_layout.setCurrentIndex(2)
         user = self.user_line.text()
         passwd = self.password_line.text()
-        #print("do match operation with input user and passwd")
-        self.verifyid_btn.setEnabled(True)
-        self.input_btn.setEnabled(True)
-        self.check_btn.setEnabled(True)
+        if match(user,passwd):
+            print('登陆成功！')
+            self.verifyid_btn.setEnabled(True)
+            self.input_btn.setEnabled(True)
+            self.check_btn.setEnabled(True)
+            self.save_btn.setEnabled(True)
+        else:
+            print('账号或者密码不正确！')
 
     def rbclicked(self):
         if self.bg1.checkedId()==1:
@@ -267,6 +282,7 @@ class MainWindow(QMainWindow):
 
     def input_file(self):
         self.right_layout.setCurrentIndex(2)
+        self.check_info.clear()
         #print("hello")
         file_path, filetype = QFileDialog.getOpenFileName(self,
                                                           "选取文件",
@@ -285,8 +301,8 @@ class MainWindow(QMainWindow):
         self.blank_label.setText("正在帮您分析")
         time_end =time.time()
         self.analysis_time = time_end-time_start
-        print(self.analysis_time)
-        self.check_info.append('分析完成,总共耗时%.2fs'%float(self.analysis_time))
+        print('分析完成,总共耗时%.2fs'%float(self.analysis_time))
+        #self.check_info.append('分析完成,总共耗时%.2fs'%float(self.analysis_time))
         self.blank_label.setText('分析完成')
         #self.progressBar.setMaximum(self.analysis_time)
         #self.timer.start(100, self)
@@ -305,9 +321,9 @@ class MainWindow(QMainWindow):
         file_save_path, ok2 = QFileDialog.getSaveFileName(self,
                                                      "文件保存",
                                                      "./",
-                                                     "All Files (*);;Text Files (*.txt)")
-        print(file_save_path)
-        # doc.save(file_save_path) #'保存doc文件到路径file_save_path'
+                                                     "DOC Files (*.docx);;DOC Files (*.doc)")
+        print('文件被保存到'+file_save_path)
+        document.save(file_save_path) #'保存doc文件到路径file_save_path'
 
     def init(self):
         # 刚开始要管理浏览器，否则很丑

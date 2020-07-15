@@ -1,14 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
+
+block_cipher = None
 import sys
 sys.setrecursionlimit(10000)
-block_cipher = None
-
 
 a = Analysis(['main.py'],
-             pathex=['D:\\github_projrct\\old_chinese'],
+             pathex=['D:\\pycharm_code\\ShuoWen'],
              binaries=[],
              datas=[('ch2id.json','.'),('sampleimg','.\\sampleimg')],
-             hiddenimports=[],
+             hiddenimports=['pkg_resources.py2_warn'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -20,15 +20,19 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          a.binaries,
-          a.zipfiles,
-          a.datas,
           [],
+          exclude_binaries=True,
           name='main',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          upx_exclude=[],
-          runtime_tmpdir=None,
-          console=False)
+          console=False ,icon='D:\\picture\\bitbug_favicon.ico')
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas,
+               strip=False,
+               upx=True,
+               upx_exclude=[],
+               name='main')
