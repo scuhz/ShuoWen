@@ -17,8 +17,7 @@ def match(user,passwd):
     for item in myRsult:
         if(user,passwd)==item:
             return True
-        else:
-            return False
+    return False
 
 def analysis(file_path_str, style=1):
     #print('开始分析文档~~')
